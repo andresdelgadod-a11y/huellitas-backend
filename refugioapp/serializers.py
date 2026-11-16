@@ -9,7 +9,15 @@ class RefugioSerializer(serializers.ModelSerializer):
 
 
 class MascotaSerializer(serializers.ModelSerializer):
-    nombre_refugio = serializers.CharField(source='refugio.nombre', read_only=True)
+    nombre_refugio = serializers.CharField(source='refugio.nombre', read_only=True, allow_null=True)
+
+    class Meta:
+        model = Mascota
+        fields = [
+            'id', 'nombre', 'tipo', 'edad', 'descripcion',
+            'estado', 'ultima_ubicacion', 'contacto',
+            'refugio', 'nombre_refugio',
+        ]
 
     class Meta:
         model = Mascota
