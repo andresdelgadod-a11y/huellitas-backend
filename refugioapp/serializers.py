@@ -18,7 +18,3 @@ class MascotaSerializer(serializers.ModelSerializer):
             'estado', 'ultima_ubicacion', 'contacto',
             'refugio', 'nombre_refugio',
         ]
-
-    class Meta:
-        model = Mascota
-        fields = ['id', 'nombre', 'tipo', 'edad', 'descripcion', 'refugio', 'nombre_refugio']
