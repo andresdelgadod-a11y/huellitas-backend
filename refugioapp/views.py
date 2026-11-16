@@ -9,5 +9,11 @@ class RefugioViewSet(viewsets.ModelViewSet):
 
 
 class MascotaViewSet(viewsets.ModelViewSet):
-    queryset = Mascota.objects.all()
     serializer_class = MascotaSerializer
+
+    def get_queryset(self):
+        queryset = Mascota.objects.all()
+        estado = self.request.query_params.get('estado')
+        if estado:
+            queryset = queryset.filter(estado=estado)
+        return queryset
